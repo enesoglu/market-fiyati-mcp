@@ -1,0 +1,9 @@
+services:
+  mcp:
+    environment:
+      AUTH_MODE: oauth
+      STATE_DIR: /state
+    volumes:
+      - state:/state
+volumes:
+  state:

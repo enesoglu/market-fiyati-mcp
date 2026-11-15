@@ -1,0 +1,11 @@
+# Replace the hostname. Use the existing host Caddy; do not deploy a second proxy.
+market.example.org {
+    header {
+        Strict-Transport-Security "max-age=31536000"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "same-origin"
+        -Server
+    }
+    reverse_proxy 127.0.0.1:8000
+}
