@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling==1.29.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "market-fiyati-mcp"
+version = "0.2.0"
+description = "Read-only grocery price tools for MCP-compatible clients."
+readme = "README.md"
+requires-python = ">=3.13"
+license = "MIT"
+authors = [{name = "market-fiyati-mcp contributors"}]
+dependencies = ["mcp==2.3.0", "httpx==0.28.1", "cryptography==50.0.2", "uvicorn==0.54.0", "python-dotenv==1.2.2"]
+
+[project.optional-dependencies]
+dev = ["pytest==9.2.0", "pytest-asyncio==1.5.0", "pytest-cov==7.1.0", "ruff==0.17.5"]
+
+[project.scripts]
+market-fiyati-mcp = "market_fiyati_mcp.__main__:main"
+market-fiyati-mcp-setup = "market_fiyati_mcp.setup:main"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/market_fiyati_mcp"]
