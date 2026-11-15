@@ -32,6 +32,17 @@ jobs:
       - run: pytest --cov=market_fiyati_mcp --cov-report=term-missing
       - run: python -m compileall -q src scripts
       - run: python -m market_fiyati_mcp --client-config
+      - name: Verify Windows installer
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          ./setup/install.ps1 -PythonPath (Get-Command python).Source
+          ./.venv/Scripts/python.exe -m market_fiyati_mcp --client-config
+      - name: Verify Unix installer
+        if: runner.os != 'Windows'
+        run: |
+          PYTHON=python sh setup/install.sh
+          .venv/bin/python -m market_fiyati_mcp --client-config
   container:
     runs-on: ubuntu-latest
     steps:
