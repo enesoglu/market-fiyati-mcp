@@ -1,5 +1,7 @@
 # Market Fiyatı MCP
 
+**Türkçe** | [English](README.en.md)
+
 **MCP uyumlu yapay zekâ istemcileri için market fiyatı araçları.**
 
 [![CI](https://github.com/enesoglu/market-fiyati-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/enesoglu/market-fiyati-mcp/actions/workflows/ci.yml)
